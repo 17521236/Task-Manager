@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+* {
+    font-family: 'Josefin Sans', sans-serif !important;
+    letter-spacing: -0.5px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+a {
+    color: black !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+.bg-center {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.size-10 {
+    font-size: 10px !important;
+}
+
+.size-12 {
+    font-size: 12px !important;
+}
+
+.size-16 {
+    font-size: 16px !important;
+}
+
+.size-20 {
+    font-size: 20px !important;
+}
+
+.size-30 {
+    font-size: 30px !important;
+}
+
+.size-45 {
+    font-size: 45px !important;
+}
+
+
+/* color */
+
+.text-black {
+    color: black;
+}

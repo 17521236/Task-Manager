@@ -1,0 +1,78 @@
+.centered-content {
+    background-color: aqua;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    max-height: 550px;
+}
+
+.title {
+    color: #33AD93;
+    font-size: 30px;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: white;
+    border-radius: 8px 0 0 8px;
+    flex-flow: column;
+}
+
+.list-items {
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+.list-item {
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: #5f5f5f !important;
+}
+
+.list-item:hover {
+    background-color: #F8F8F8;
+}
+
+.list-items .is-active {
+    background-color: #cff8ef;
+    color: #006450 !important;
+}
+
+.btn-new {
+    background-color: #18A488;
+}
+
+
+/* taks */
+
+.list-tasks {
+    background-color: #F8F8F8;
+    flex-grow: 1;
+    border-radius: 0 8px 8px 0;
+}
+
+.task {
+    padding: 15px 20px;
+    margin-top: 16px;
+    border-radius: 5px;
+    background-color: white;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.task:hover:not(.is-done) {
+    cursor: pointer;
+    box-shadow: 0 0 0 5px #eeeeee;
+}
+
+.task:active:not(.is-done) {
+    transform: scale(0.97);
+}
+
+.list-tasks .is-done {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
