@@ -54,3 +54,25 @@ a:hover {
 .text-black {
     color: black;
 }
+
+
+
+.centered-content {
+    background-color: aqua;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: #33AD93;
+    font-size: 30px;
+}
+.bg-btn{
+    background-color:#1CC2A1 !important;
+    border: none !important;
+}
+.bg-btn:hover{
+    box-shadow: 0 0 10px !important;
+}

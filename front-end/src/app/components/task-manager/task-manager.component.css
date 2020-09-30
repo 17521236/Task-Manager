@@ -1,17 +1,10 @@
-.centered-content {
-    background-color: aqua;
-}
+
 
 .content {
     width: 100%;
     height: 100%;
     max-width: 1000px;
     max-height: 550px;
-}
-
-.title {
-    color: #33AD93;
-    font-size: 30px;
 }
 
 .sidebar {

@@ -9,11 +9,13 @@ import { TaskManagerComponent } from './components/task-manager/task-manager.com
 import { WebRequestService } from './services/web-request.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskService } from './services/task.service';
+import { NewListComponent } from './components/new-list/new-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskManagerComponent
+    TaskManagerComponent,
+    NewListComponent
   ],
   imports: [
     BrowserModule,
