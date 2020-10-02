@@ -1,7 +1,7 @@
 <div class="centered-content">
     <div class="create-form p-4">
         <div class="title mb-3">Create new List</div>
-        <input #inputTitle name="title" type="text" class="form-control border-0 mb-4 " style="background-color: #F8F8F8;">
+        <input #inputTitle name="title" type="text" class="form-control border-0 mb-4 " style="background-color: #F8F8F8;" autofocus>
         <div class="d-flex ">
             <button class="btn btn btn-light ml-auto" routerLink="/">Cancer</button>
             <button class="btn btn-info bg-btn ml-1" (click)="createList(inputTitle.value)">Create</button>

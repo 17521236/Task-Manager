@@ -4,7 +4,10 @@ module.exports = {
     getAll: (req, res) => {
         List.find()
             .then(data => res.send(data))
-            .catch(err => { console.log(err) })
+            .catch(err => res.send({
+                result: '0',
+                errors: err
+            }))
     },
     create: async(req, res) => {
         // body req

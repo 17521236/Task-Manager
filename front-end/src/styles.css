@@ -40,8 +40,20 @@ a:hover {
     font-size: 20px !important;
 }
 
+.size-25 {
+    font-size: 25px !important;
+}
+
 .size-30 {
     font-size: 30px !important;
+}
+
+.size-35 {
+    font-size: 35px !important;
+}
+
+.size-40 {
+    font-size: 40px !important;
 }
 
 .size-45 {
@@ -55,8 +67,6 @@ a:hover {
     color: black;
 }
 
-
-
 .centered-content {
     background-color: aqua;
     height: 100%;
@@ -65,14 +75,34 @@ a:hover {
     align-items: center;
 }
 
+.create-form {
+    background-color: #fff;
+    width: 100%;
+    max-width: 400px;
+    min-height: 220px;
+    border-radius: 8px;
+}
+
 .title {
     color: #33AD93;
     font-size: 30px;
 }
-.bg-btn{
-    background-color:#1CC2A1 !important;
+
+.bg-btn {
+    background-color: #1CC2A1 !important;
     border: none !important;
 }
-.bg-btn:hover{
+
+.bg-btn:hover {
     box-shadow: 0 0 10px !important;
 }
+
+
+/* 
+.btn {
+    transition: transform 0.15s ease !important;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+} */

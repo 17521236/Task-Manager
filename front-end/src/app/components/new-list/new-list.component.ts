@@ -1,5 +1,9 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { from } from 'rxjs';
 import { TaskService } from 'src/app/services/task.service';
+import { List } from '../../models/list.model'
 
 @Component({
   selector: 'app-new-list',
@@ -8,7 +12,7 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class NewListComponent implements OnInit {
 
-  constructor(private taskService:TaskService) {
+  constructor(private taskService: TaskService, private router: Router) {
 
   }
 
@@ -17,8 +21,8 @@ export class NewListComponent implements OnInit {
   }
 
   createList(title) {
-    this.taskService.createList(title).subscribe(res => {
-      console.log(res);
+    this.taskService.createList(title).subscribe((newList: List) => {
+      this.router.navigate(['/lists', newList._id])
     })
   }
 }

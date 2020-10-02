@@ -1,6 +1,7 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { List } from 'src/app/models/list.model';
+import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -10,15 +11,41 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskManagerComponent implements OnInit {
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute) {
+  lists: List[]=[];
+  tasks: Task[]=[];
+  listId: string;
 
+  constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((listId) => {
-      console.log(listId)
+    this.route.params.subscribe((params: Params) => {
+      this.listId = params['listId'];
+      this.getLists();
+      this.getTasks();
     })
   }
 
+  getLists() {
+    this.taskService.getLists().subscribe((lists: List[]) => this.lists = lists);
+  }
+
+  getTasks() {
+    if (this.listId) {
+      this.taskService.getTasksByListId(this.listId).subscribe((tasks: Task[]) => this.tasks = tasks);
+    }
+  }
+
+  createTask() {
+    this.router.navigate(['/lists', this.listId, 'create-task'])
+  }
+
+  onDone(task: Task) {
+    this.taskService.completedTask(task).subscribe(() => {
+      task.completed = !task.completed
+    });
+  }
 
 }
+
+

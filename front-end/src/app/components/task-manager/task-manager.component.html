@@ -2,32 +2,40 @@
     <div class="content d-flex">
         <div class="sidebar d-flex py-4 px-4">
             <div class="title">Lists</div>
+
             <div class="list-items d-flex mt-3">
-                <a href="#" class="list-item align-items-center is-active">
-                    <p class="m-0">Task 01</p>
-                </a>
-                <a href="#" class="list-item align-items-center ">
-                    <p class="m-0">Task 01</p>
-                </a>
-                <a href="#" class="list-item align-items-center">
-                    <p class="m-0">Task 01</p>
+                <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
+                    <p class=" m-0 ">{{list.title}}</p>
                 </a>
             </div>
-            <button class="btn btn-new text-white" routerLink="create">+ New List</button>
+
+            <div *ngIf="lists.length === 0" class="text-center">
+                <i class='bx bxs-down-arrow bx-fade-up size-30' style="color: gray;"></i>
+            </div>
+            <button class="btn btn-new text-white " routerLink="/create-list">+ New List</button>
         </div>
 
-        <div class="list-tasks py-4 px-4">
-            <div class="title">Tasks</div>
+        <div class="list-tasks py-4 px-4 ">
+            <!-- have listId -->
+            <div *ngIf="listId">
+                <div class="title ">Tasks</div>
 
-            <div class="task">
-                <p class="m-0">This is do some thing</p>
+                <div class="task" *ngFor="let task of tasks" (click)="onDone(task)" [ngClass]="task.completed ? 'is-done':''">
+                    <p class="m-0 ">{{task.title}}</p>
+                </div>
+
+                <div *ngIf="tasks.length === 0 && lists.length !== 0 " class="mt-4 text-center size-16">
+                    There are no tasks here. Click the add button to create a new task
+                </div>
+
+                <button class="btn btn-new-task text-white size-25 m-4 " (click)="createTask()"><i
+                        class='bx bx-plus'></i></button>
             </div>
-            <div class="task is-done">
-                <p class="m-0">This is do some thing</p>
+            <!-- No listId -->
+            <div *ngIf="!listId" class="mt-4 text-center size-16">
+                Please select a list from the sidebar
             </div>
-            <div class="task">
-                <p class="m-0">This is do some thing</p>
-            </div>
+
         </div>
     </div>
 </div>
