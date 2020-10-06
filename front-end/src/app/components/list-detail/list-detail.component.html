@@ -1,0 +1,19 @@
+<div class="centered-content">
+    <div class="create-form p-4">
+
+        <!-- title -->
+        <div class="title mb-3" *ngIf="pageState === 'add'">Create new List</div>
+        <div class="title mb-3" *ngIf="pageState === 'edit'">Edit List</div>
+
+        <!-- form -->
+        <form #form="ngForm" (ngSubmit)="save(form)">
+            <input name="title" type="text" class="form-control title__inp border-0 mb-4" [(ngModel)]="list.title" autofocus>
+            <div class="d-flex ">
+                <button class="btn btn btn-light ml-auto" [routerLink]="['/lists']">Cancer</button>
+                <button class="btn btn-info bg-btn ml-1" type="submit" *ngIf="pageState==='add'">Create</button>
+                <button class="btn btn-info bg-btn ml-1" type="submit" *ngIf="pageState==='edit'">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>

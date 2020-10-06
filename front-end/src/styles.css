@@ -67,6 +67,9 @@ a:hover {
     color: black;
 }
 
+
+/* task manager */
+
 .centered-content {
     background-color: aqua;
     height: 100%;
@@ -91,6 +94,7 @@ a:hover {
 .bg-btn {
     background-color: #1CC2A1 !important;
     border: none !important;
+    color: #fff !important;
 }
 
 .bg-btn:hover {

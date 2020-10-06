@@ -1,0 +1,27 @@
+<div class="centered-content">
+    <div class="login-box p-4">
+        <form #loginForm="ngForm" (ngSubmit)="checkLogin(loginForm)">
+            <div class="title mb-3 text-center font-weight-bold">Login</div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="email">
+                            <i class='bx bxs-user'></i>
+                        </span>
+                </div>
+                <input ngModel name="email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email">
+            </div>
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="password">
+                            <i class='bx bxs-lock-alt'></i>
+                        </span>
+                </div>
+                <input ngModel name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password">
+            </div>
+
+            <p class="text-danger">{{error}}</p>
+
+            <button class="btn bg-btn mb-2 w-100">Sign In</button>
+        </form>
+    </div>
+</div>

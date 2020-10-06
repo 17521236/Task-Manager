@@ -33,10 +33,6 @@
     color: #006450 !important;
 }
 
-.btn-new {
-    background-color: #18A488;
-}
-
 
 /* taks */
 
@@ -48,11 +44,17 @@
 }
 
 .task {
-    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
     margin-top: 16px;
     border-radius: 5px;
     background-color: white;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.task__text {
+    flex-grow: 1;
 }
 
 .task:hover:not(.is-done) {
@@ -64,10 +66,35 @@
     transform: scale(0.96);
 }
 
-.list-tasks .is-done {
+.is-done .task__text {
     text-decoration: line-through;
     opacity: 0.8;
 }
+
+.task__buttons {
+    display: flex;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.task__button {
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+
+.task:hover .task__buttons {
+    opacity: 1;
+    transform: scale(0.85);
+}
+
+
+/* btn new task */
 
 .btn-new-task {
     background-color: #18A488;
@@ -83,4 +110,23 @@
     position: absolute;
     bottom: 11px;
     right: 12px;
+}
+
+
+/* task dd */
+
+.dropdown-task {
+    position: relative;
+}
+
+.dropdown-task:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.dropdown-item:active {
+    background-color: #cff8ef;
 }

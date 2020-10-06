@@ -1,7 +1,9 @@
 <div class="centered-content">
     <div class="content d-flex">
         <div class="sidebar d-flex py-4 px-4">
-            <div class="title">Lists</div>
+            <div class="title">Lists
+
+            </div>
 
             <div class="list-items d-flex mt-3">
                 <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
@@ -12,27 +14,43 @@
             <div *ngIf="lists.length === 0" class="text-center">
                 <i class='bx bxs-down-arrow bx-fade-up size-30' style="color: gray;"></i>
             </div>
-            <button class="btn btn-new text-white " routerLink="/create-list">+ New List</button>
+            <button class="btn bg-btn text-white " routerLink="/lists/add">+ New List</button>
         </div>
 
         <div class="list-tasks py-4 px-4 ">
             <!-- have listId -->
             <div *ngIf="listId">
-                <div class="title ">Tasks</div>
+                <div class="title d-flex">Tasks
+                    <div class="ml-auto dropdown-task d-flex align-items-center">
+                        <i class='bx bx-cog'></i>
+                        <div class="dropdown-menu dropdown-menu-right m-0">
+                            <a class="dropdown-item" [routerLink]="['/lists',listId,'edit']">Edit</a>
+                            <a class="dropdown-item text-danger" (click)="deleteList()">Delete</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="task" *ngFor="let task of tasks" (click)="onDone(task)" [ngClass]="task.completed ? 'is-done':''">
-                    <p class="m-0 ">{{task.title}}</p>
+                    <div class="task__text">{{task.title}}</div>
+                    <div class="task__buttons">
+                        <button class="btn btn-danger mr-2 task__button" (click)="deleteTask(task)">
+              <span class='bx bxs-trash-alt'></span>
+            </button>
+                        <button class="btn btn-outline-secondary task__button" [routerLink]="['tasks',task._id,'edit']">
+              <i class='bx bxs-edit'></i>
+            </button>
+                    </div>
                 </div>
 
                 <div *ngIf="tasks.length === 0 && lists.length !== 0 " class="mt-4 text-center size-16">
                     There are no tasks here. Click the add button to create a new task
                 </div>
 
-                <button class="btn btn-new-task text-white size-25 m-4 " (click)="createTask()"><i
-                        class='bx bx-plus'></i></button>
+                <button class="btn btn-new-task text-white size-25 m-4" routerLink='tasks/add'><i
+            class='bx bx-plus'></i></button>
             </div>
             <!-- No listId -->
-            <div *ngIf="!listId" class="mt-4 text-center size-16">
+            <div class="h-100 w-100 d-flex align-items-center justify-content-center size-20" *ngIf="!listId">
                 Please select a list from the sidebar
             </div>
 

@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
 const port = 3000;
+
+const authRouter = require('./routes/auth.route')
+const userRouter = require('./routes/user.route')
 const listRouter = require('./routes/list.route')
 
 
@@ -9,6 +13,7 @@ const listRouter = require('./routes/list.route')
 const mongoose = require('./mongoose')
 
 // load middleware
+app.use(cookieParser('ajskvhbjklksgahjklkaschjhkj46513sachjbknlm'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -21,6 +26,8 @@ app.use(function(req, res, next) {
 });
 
 // router here
+app.use('/auth', authRouter);
+app.use('/users', userRouter);
 app.use('/lists', listRouter);
 
 // connection

@@ -1,0 +1,16 @@
+<div class="centered-content">
+    <div class="create-form p-4">
+        <div class="title mb-3" *ngIf="pageState==='add'">Create new Task</div>
+        <div class="title mb-3" *ngIf="pageState==='edit'">Edit Task</div>
+
+        <form #form="ngForm" (ngSubmit)="save(form)">
+            <input [(ngModel)]="task.title" name="title" type="text" class="form-control border-0 mb-4 title__inp">
+            <div class="d-flex ">
+                <button class="btn btn btn-light ml-auto" [routerLink]="['/lists',task._listId]">Cancer</button>
+                <button class="btn btn-info bg-btn ml-1" type="submit" *ngIf="pageState==='add'">Create</button>
+                <button class="btn btn-info bg-btn ml-1" type="submit" *ngIf="pageState==='edit'">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
