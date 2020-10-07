@@ -3,7 +3,7 @@ const Task = require('../models/task.model');
 
 module.exports = {
     getAll: (req, res) => {
-        List.find()
+        List.find({_userId:req.params.userId})
             .then(data => res.send(data))
             .catch(err => res.send(err))
     },
@@ -12,9 +12,8 @@ module.exports = {
             .then(data => res.send(data))
             .catch(err => res.send(err));
     },
-    create: async(req, res) => {
-        let title = req.body.title;
-        List.create({ title })
+    create: (req, res) => {
+        List.create(req.body)
             .then(data => res.send(data))
             .catch(err => res.send(err))
     },

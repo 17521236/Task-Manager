@@ -1,132 +1,144 @@
 .content {
-    width: 100%;
-    height: 100%;
-    max-width: 1000px;
-    max-height: 550px;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  max-height: 550px;
+  position: relative;
 }
 
 .sidebar {
-    width: 300px;
-    background-color: white;
-    border-radius: 8px 0 0 8px;
-    flex-flow: column;
+  width: 300px;
+  background-color: white;
+  border-radius: 8px 0 0 8px;
+  flex-flow: column;
 }
 
 .list-items {
-    flex-flow: column;
-    flex-grow: 1;
+  flex-flow: column;
+  flex-grow: 1;
 }
 
 .list-item {
-    padding: 10px 15px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    color: #5f5f5f !important;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color: #5f5f5f !important;
 }
 
 .list-item:hover {
-    background-color: #F8F8F8;
+  background-color: #F8F8F8;
 }
 
 .list-items .is-active {
-    background-color: #cff8ef;
-    color: #006450 !important;
+  background-color: #cff8ef;
+  color: #006450 !important;
 }
-
 
 /* taks */
 
 .list-tasks {
-    position: relative;
-    background-color: #F8F8F8;
-    flex-grow: 1;
-    border-radius: 0 8px 8px 0;
+  position: relative;
+  background-color: #F8F8F8;
+  flex-grow: 1;
+  border-radius: 0 8px 8px 0;
 }
 
 .task {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    margin-top: 16px;
-    border-radius: 5px;
-    background-color: white;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-top: 16px;
+  border-radius: 5px;
+  background-color: white;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .task__text {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .task:hover:not(.is-done) {
-    cursor: pointer;
-    box-shadow: 0 0 0 5px #eeeeee;
+  cursor: pointer;
+  box-shadow: 0 0 0 5px #eeeeee;
 }
 
 .task:active {
-    transform: scale(0.96);
+  transform: scale(0.96);
 }
 
 .is-done .task__text {
-    text-decoration: line-through;
-    opacity: 0.8;
+  text-decoration: line-through;
+  opacity: 0.8;
 }
 
 .task__buttons {
-    display: flex;
-    align-items: center;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    transition: opacity 0.2s, transform 0.2s;
-    transform: scale(0.5);
-    opacity: 0;
+  display: flex;
+  align-items: center;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: scale(0.5);
+  opacity: 0;
 }
 
 .task__button {
-    display: flex;
-    height: 40px;
-    align-items: center;
+  display: flex;
+  height: 40px;
+  align-items: center;
 }
 
 .task:hover .task__buttons {
-    opacity: 1;
-    transform: scale(0.85);
+  opacity: 1;
+  transform: scale(0.85);
 }
-
 
 /* btn new task */
 
 .btn-new-task {
-    background-color: #18A488;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+  background-color: #18A488;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .btn-new-task i {
-    position: absolute;
-    bottom: 11px;
-    right: 12px;
+  position: absolute;
+  bottom: 11px;
+  right: 12px;
 }
-
 
 /* task dd */
 
 .dropdown-task {
-    position: relative;
+  position: relative;
+cursor: pointer;
 }
 
 .dropdown-task:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .dropdown-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dropdown-item:active {
-    background-color: #cff8ef;
+  background-color: #cff8ef;
+}
+
+/* customer */
+
+.customer {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  cursor: pointer;
+}
+
+.customer:hover .dropdown-menu{
+  display: block;
 }

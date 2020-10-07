@@ -10,7 +10,12 @@ const userSchema = mongoose.Schema({
         type: String,
         minlength: 8,
         required: true
-    }
+    },
+    name: {
+        type: String,
+        minlength: 1,
+        required: true
+    },
 });
 const User = mongoose.model('User', userSchema);
 module.exports = User;

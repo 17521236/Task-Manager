@@ -1,0 +1,45 @@
+<div class="centered-content">
+  <div class="login-box p-4">
+    <!-- login form -->
+    <form #form="ngForm" (ngSubmit)="save(form)">
+      <!-- title -->
+      <div class="title mb-3 text-center font-weight-bold">Create Account</div>
+      <!-- title -->
+      <!-- body -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class='bx bxs-user '></i></span>
+        </div>
+        <input [(ngModel)]="user.name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Email"
+          aria-describedby="Name">
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class='bx bxs-envelope-open'></i> </span>
+        </div>
+        <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
+          aria-describedby="email">
+      </div>
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class='bx bxs-lock-alt'></i> </span>
+        </div>
+        <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="New password" aria-label="New password"
+          aria-describedby="password">
+      </div>
+
+      <!-- end  body -->
+      <p class="text-danger ml-3" *ngFor="let error of errors">{{error}}</p>
+
+      <!-- submit btn -->
+      <button class="btn bg-btn mb-2 w-100">Sign up</button>
+      <!-- end submit btn -->
+
+      <div class="sigup text-center mt-3" style="opacity: 0.7;">
+        Have an account? <a [routerLink]="['/login']" class="text-info"> Login now</a>
+      </div>
+    </form>
+    <!-- end form -->
+  </div>
+</div>

@@ -4,6 +4,7 @@
         <div class="title mb-3" *ngIf="pageState==='edit'">Edit Task</div>
 
         <form #form="ngForm" (ngSubmit)="save(form)">
+          <button hidden="true" type="submit"></button>
             <input [(ngModel)]="task.title" name="title" type="text" class="form-control border-0 mb-4 title__inp">
             <div class="d-flex ">
                 <button class="btn btn btn-light ml-auto" [routerLink]="['/lists',task._listId]">Cancer</button>

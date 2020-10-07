@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { List } from 'src/app/models/list.model';
 import { Task } from 'src/app/models/task.model';
+import { LoginService } from 'src/app/services/login.service';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class TaskManagerComponent implements OnInit {
   tasks: Task[] = [];
   listId: string;
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) {
+  constructor(private taskService: TaskService, private loginService: LoginService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class TaskManagerComponent implements OnInit {
   }
 
   getLists(): void {
-    this.taskService.getLists().subscribe((lists: List[]) => this.lists = lists);
+    this.taskService.getListsByUserId().subscribe((lists: List[]) => this.lists = lists);
   }
 
   getTasks(): void {
@@ -56,6 +57,11 @@ export class TaskManagerComponent implements OnInit {
         this.tasks = this.tasks.filter(x => x._id !== task._id);
       }
     }, err => alert(err));
+  }
+
+  logOut(): void {
+    this.loginService.logOut();
+    this.router.navigate(['login']);
   }
 }
 

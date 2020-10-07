@@ -4,7 +4,7 @@ const listController = require('../controllers/list.controller')
 const taskController = require('../controllers/task.controller')
 
 //list
-router.get('', listController.getAll);
+router.get('/user/:userId', listController.getAll);
 router.get('/:id', listController.getOne);
 router.post('', listController.create);
 router.put('/:id', listController.update);

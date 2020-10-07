@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TaskService } from './services/task.service';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
     TaskManagerComponent,
     ListDetailComponent,
     TaskDetailComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,16 +10,16 @@ import { WebRequestService } from './web-request.service';
 export class TaskService {
   constructor(private webReqService: WebRequestService) { }
 
-  getLists(): Observable<any> {
-    return this.webReqService.get('lists');
+  getListsByUserId(): Observable<any> {
+    return this.webReqService.get(`lists/user/${localStorage.getItem('userId')}`);
   }
 
   getListById(listId: string): Observable<any> {
     return this.webReqService.get(`lists/${listId}`);
   }
 
-  createList(title: string): Observable<any> {
-    return this.webReqService.post('lists', { title });
+  createList(list: List): Observable<any> {
+    return this.webReqService.post('lists', list);
   }
 
   updateList(list: List): Observable<any> {

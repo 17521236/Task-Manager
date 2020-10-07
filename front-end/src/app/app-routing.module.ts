@@ -4,12 +4,13 @@ import { LoginComponent } from './components/login/login.component';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
 import { TaskManagerComponent } from './components/task-manager/task-manager.component';
 import { LoginGuard } from './guards/login.guard';
-import { Route } from '@angular/compiler/src/core';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   // list
   { path: 'lists', component: TaskManagerComponent, canActivate: [LoginGuard] },
   { path: 'lists/add', component: ListDetailComponent, canActivate: [LoginGuard], data: { pageState: 'add' } },
