@@ -63,6 +63,10 @@ export class TaskManagerComponent implements OnInit {
     this.loginService.logOut();
     this.router.navigate(['login']);
   }
+
+  getCurrentUserName(){
+    return this.loginService.getCurrentUserName();
+  }
 }
 
 
