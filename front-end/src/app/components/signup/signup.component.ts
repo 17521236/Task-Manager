@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    this.userService.createUser(this.user).subscribe((res: any) => {
+    this.userService.createUser(this.user).subscribe((res:any) => {
       if (!res.errors)
         this.router.navigate(['login']);
       else {
