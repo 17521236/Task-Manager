@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class WebRequestService {
 
-  readonly ROOT_URL = 'http://localhost:3000'
+  readonly ROOT_URL = 'https://task-manager-api-0.herokuapp.com'
   constructor(private http: HttpClient) { }
 
   get(uri: string) {
@@ -20,7 +20,7 @@ export class WebRequestService {
   put(uri: string, payload: Object) {
     return this.http.put(`${this.ROOT_URL}/${uri}`, payload);
   }
-  
+
   delete(uri: string) {
     return this.http.delete(`${this.ROOT_URL}/${uri}`);
   }

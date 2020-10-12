@@ -15,7 +15,7 @@ export class LoginService {
   }
 
   getCurrentUserName(): string {
-    return localStorage.getItem('email');
+    return localStorage.getItem('userName');
   }
 
   getCurrentUserId(): string {
@@ -30,7 +30,7 @@ export class LoginService {
   }
 
   logOut(): void{
-    localStorage.removeItem('email');
+    localStorage.removeItem('userName');
     localStorage.removeItem('userId');
   }
 }

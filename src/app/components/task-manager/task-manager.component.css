@@ -136,9 +136,16 @@ cursor: pointer;
   position: absolute;
   z-index: 1;
   right: 0;
+}
+
+.customer__icon{
   cursor: pointer;
 }
 
-.customer:hover .dropdown-menu{
+.customer__icon:hover .dropdown-menu{
   display: block;
+}
+
+.customer__name{
+
 }

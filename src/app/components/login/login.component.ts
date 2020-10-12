@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.loginService.checkUser(user).subscribe((res: any) => {
       if (res.result === '1') {
         localStorage.setItem('userId', res.user._id);
-        localStorage.setItem('email', res.user.email);
+        localStorage.setItem('userName', res.user.name);
 
         this.router.navigate(['lists']);
       } else {
