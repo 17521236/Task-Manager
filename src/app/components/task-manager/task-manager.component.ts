@@ -64,8 +64,9 @@ export class TaskManagerComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  getCurrentUserName(){
-    return this.loginService.getCurrentUserName();
+  getCurrentUserName() {
+    let userName: string = this.loginService.getCurrentUserName();
+    return userName;
   }
 }
 
