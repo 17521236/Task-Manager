@@ -45,13 +45,13 @@ export class TaskDetailComponent implements OnInit {
 
   createTask(): void {
     this.taskService.createTask(this.task).subscribe(res => {
-      this.router.navigate(['lists', this.task._listId]);
+      this.router.navigate(['lists', this.task._listId,'tasks']);
     });
   }
 
   updateTask(): void {
     this.taskService.updateTask(this.task).subscribe(res => {
-      this.router.navigate(['lists', this.task._listId]);
+      this.router.navigate(['lists', this.task._listId,'tasks']);
     });
   }
 }

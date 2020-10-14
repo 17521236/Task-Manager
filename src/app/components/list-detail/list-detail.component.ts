@@ -46,13 +46,13 @@ export class ListDetailComponent implements OnInit {
 
   createList(): void {
     this.taskService.createList(this.list).subscribe((newList: List) => {
-      this.router.navigate(['/lists', newList._id]);
+      this.router.navigate(['/lists', newList._id,'tasks']);
     });
   }
 
   updateList(): void {
     this.taskService.updateList(this.list).subscribe((res: any) => {
-      this.router.navigate(['/lists', res._id]);
+      this.router.navigate(['/lists', res._id,'tasks']);
     }, err => console.log(err));
   }
 }

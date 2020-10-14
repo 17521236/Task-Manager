@@ -54,7 +54,7 @@ export class TaskManagerComponent implements OnInit {
   deleteTask(task: Task): void {
     this.taskService.deleteTask(this.listId, task._id).subscribe((res: any) => {
       if (res.result === '1') {
-        this.tasks = this.tasks.filter(x => x._id !== task._id);
+        this.getTasks();
       }
     }, err => alert(err));
   }
