@@ -25,7 +25,7 @@
         <div class="dropdown-task d-flex align-items-center pl-3" *ngIf="listId">
           <i class='bx bxs-pencil size-25'></i>
           <div class="dropdown-menu dropdown-menu-right m-0">
-            <a class="dropdown-item" [routerLink]="['/lists',listId,'edit']">Edit</a>
+            <a class="dropdown-item" [routerLink]="['/lists','edit',listId]">Edit</a>
             <a class="dropdown-item text-danger" (click)="deleteList()">Delete</a>
           </div>
         </div>
@@ -34,7 +34,7 @@
 
       <!-- lists__body -->
       <div class="list-items d-flex mt-3">
-        <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id]"
+        <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id, 'tasks']"
           routerLinkActive="is-active">
           <p class=" m-0 ">{{list.title}}</p>
         </a>
@@ -62,7 +62,7 @@
             <button class="btn btn-danger mr-2 task__button" (click)="deleteTask(task)">
               <span class='bx bxs-trash-alt'></span>
             </button>
-            <button class="btn btn-outline-secondary task__button" [routerLink]="['tasks',task._id,'edit']">
+            <button class="btn btn-outline-secondary task__button" [routerLink]="['/lists',task._listId,'tasks','edit',task._id]">
               <i class='bx bxs-edit'></i>
             </button>
           </div>

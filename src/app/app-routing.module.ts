@@ -11,14 +11,14 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  // list
-  { path: 'lists', component: TaskManagerComponent, canActivate: [LoginGuard] },
-  { path: 'lists/add', component: ListDetailComponent, canActivate: [LoginGuard], data: { pageState: 'add' } },
-  { path: 'lists/:listId/edit', component: ListDetailComponent, canActivate: [LoginGuard], data: { pageState: 'edit' } },
-  // task
-  { path: 'lists/:listId', component: TaskManagerComponent, canActivate: [LoginGuard] },
+
+  { path: 'lists/:listId/tasks/edit/:id', component: TaskDetailComponent, canActivate: [LoginGuard], data: { pageState: 'edit' } },
   { path: 'lists/:listId/tasks/add', component: TaskDetailComponent, canActivate: [LoginGuard], data: { pageState: 'add' } },
-  { path: 'lists/:listId/tasks/:id/edit', component: TaskDetailComponent, canActivate: [LoginGuard], data: { pageState: 'edit' } },
+  { path: 'lists/:listId/tasks', component: TaskManagerComponent, canActivate: [LoginGuard] },
+
+  { path: 'lists/edit/:listId', component: ListDetailComponent, canActivate: [LoginGuard], data: { pageState: 'edit' } },
+  { path: 'lists/add', component: ListDetailComponent, canActivate: [LoginGuard], data: { pageState: 'add' } },
+  { path: 'lists', component: TaskManagerComponent, canActivate: [LoginGuard] },
 ];
 
 
