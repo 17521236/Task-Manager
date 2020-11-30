@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
-// http module
-import { WebRequestService } from './services/web-request.service';
-import { HttpClientModule } from '@angular/common/http';
-
 // component
 import { AppComponent } from './app.component';
 import { TaskManagerComponent } from './components/task-manager/task-manager.component';
 import { LoginComponent } from './components/login/login.component';
-import { TaskService } from './services/task.service';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { SignupComponent } from './components/signup/signup.component';
+
+// module
+import { SharedModule } from 'src/shared/shared.module';
+import { MessageNotificationComponent } from './shared/message-notification/message-notification.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +23,15 @@ import { SignupComponent } from './components/signup/signup.component';
     TaskDetailComponent,
     LoginComponent,
     SignupComponent,
+    MessageNotificationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    SharedModule
   ],
-  providers: [
-    WebRequestService,
-    TaskService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

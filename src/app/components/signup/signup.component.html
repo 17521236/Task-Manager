@@ -1,45 +1,65 @@
 <div class="centered-content">
-  <div class="login-box p-4">
-    <!-- login form -->
-    <form #form="ngForm" (ngSubmit)="save(form)">
-      <!-- title -->
-      <div class="title mb-3 text-center font-weight-bold">Create Account</div>
-      <!-- title -->
-      <!-- body -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class='bx bxs-user '></i></span>
-        </div>
-        <input [(ngModel)]="user.name" name="name" type="text" class="form-control" placeholder="Name" aria-label="Email"
-          aria-describedby="Name">
-      </div>
+    <div class="login-box p-4">
+        <!-- login form -->
+        <form #form="ngForm" (ngSubmit)="save(form)">
+            <!-- title -->
+            <div class="title mb-3 text-center font-weight-bold">Create Account</div>
+            <!-- title -->
+            <!-- body -->
+            <!-- name input-->
+            <div class=" mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class='bx bxs-user '></i></span>
+                    </div>
+                    <input #name="ngModel" [(ngModel)]="user.name" name="name" type="text" class="form-control" placeholder="Name" required maxlength="20">
+                </div>
+                <div class="text-danger m-1 size-14" *ngIf="name.invalid && name.touched">
+                    <span *ngIf="name.errors?.required">* Name is required</span>
+                </div>
+            </div>
+            <!-- email input-->
+            <div class=" mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class='bx bxs-envelope-open'></i> </span>
+                    </div>
+                    <input #email="ngModel" [(ngModel)]="user.email" name="email" type="email" class="form-control" placeholder="Email" required minlength="6" maxlength="30" email>
+                </div>
+                <div class="text-danger m-1 size-14" *ngIf="email.invalid && email.touched">
+                    <span *ngIf="email.errors?.required">* Email is required</span>
+                    <span *ngIf="email.errors?.minlength || email.errors?.maxlength">* Length from 6 to 32 characters</span>
+                    <span *ngIf="!(email.errors?.minlength || email.errors?.maxlength) && email.errors?.email">* Email invalid</span>
+                </div>
+            </div>
+            <!-- pass input-->
+            <div class=" mb-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class='bx bxs-lock-alt'></i> </span>
+                    </div>
+                    <input #pwd="ngModel" [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="New password" required minlength="6" maxlength="32">
+                </div>
+                <div class="text-danger m-1 size-14" *ngIf="pwd.invalid && pwd.touched">
+                    <span *ngIf="pwd.errors?.required">* Password is required</span>
+                    <span *ngIf="pwd.errors?.minlength || pwd.errors?.maxlength">* Length from 6 to 32 characters</span>
+                </div>
+            </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class='bx bxs-envelope-open'></i> </span>
-        </div>
-        <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
-          aria-describedby="email">
-      </div>
-      <div class="input-group mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class='bx bxs-lock-alt'></i> </span>
-        </div>
-        <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="New password" aria-label="New password"
-          aria-describedby="password">
-      </div>
 
-      <!-- end  body -->
-      <p class="text-danger ml-3" *ngFor="let error of errors">{{error}}</p>
 
-      <!-- submit btn -->
-      <button class="btn bg-btn mb-2 w-100">Sign up</button>
-      <!-- end submit btn -->
 
-      <div class="sigup text-center mt-3" style="opacity: 0.7;">
-        Have an account? <a [routerLink]="['/login']" class="text-info"> Login now</a>
-      </div>
-    </form>
-    <!-- end form -->
-  </div>
+            <!-- end  body -->
+            <p class="text-danger ml-3" *ngFor="let error of errors">{{error}}</p>
+
+            <!-- submit btn -->
+            <button class="btn bg-btn mb-2 w-100">Sign up</button>
+            <!-- end submit btn -->
+
+            <div class="sigup text-center mt-3" style="opacity: 0.7;">
+                Have an account? <a [routerLink]="['/login']" class="text-info"> Login now</a>
+            </div>
+        </form>
+        <!-- end form -->
+    </div>
 </div>

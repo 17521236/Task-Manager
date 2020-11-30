@@ -1,90 +1,88 @@
 <div class="centered-content">
-  <div class="content d-flex">
+    <div class="content d-flex">
 
-    <!-- customer -->
+        <!-- customer -->
 
-    <div class=" customer m-4 d-flex align-items-center ">
-      <div class="customer__name mr-2">{{getCurrentUserName()}}</div>
-      <div class="customer__icon">
-        <i class=' bx bxs-user-circle size-40 title'></i>
-        <div class="dropdown-menu dropdown-menu-right m-0">
-          <a class="dropdown-item text-danger d-flex align-items-center" (click)="logOut()">
-            <i class='bx bx-log-out'></i>
-            &nbsp; Logout
-          </a>
+        <div class=" customer m-4 d-flex align-items-center ">
+            <div class="customer__name mr-2">{{getCurrentUserName()}}</div>
+            <div class="customer__icon">
+                <i class=' bx bxs-user-circle size-40 title'></i>
+                <div class="dropdown-menu dropdown-menu-right m-0">
+                    <a class="dropdown-item text-danger d-flex align-items-center" (click)="logOut()">
+                        <i class='bx bx-log-out'></i> &nbsp; Logout
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- end customer -->
+        <!-- end customer -->
 
-    <!-- begin lists -->
-    <div class="sidebar d-flex py-4 px-4">
-      <!-- lists__header -->
-      <div class="d-flex title">
-        <div class="flex-grow-1">Lists</div>
-        <div class="dropdown-task d-flex align-items-center pl-3" *ngIf="listId">
-          <i class='bx bxs-pencil size-25'></i>
-          <div class="dropdown-menu dropdown-menu-right m-0">
-            <a class="dropdown-item" [routerLink]="['/lists','edit',listId]">Edit</a>
-            <a class="dropdown-item text-danger" (click)="deleteList()">Delete</a>
-          </div>
+        <!-- begin lists -->
+        <div class="sidebar d-flex py-4 px-4">
+            <!-- lists__header -->
+            <div class="d-flex title">
+                <div class="flex-grow-1">Lists</div>
+                <div class="dropdown-task d-flex align-items-center pl-3" *ngIf="listId">
+                    <i class='bx bxs-pencil size-25'></i>
+                    <div class="dropdown-menu dropdown-menu-right m-0">
+                        <a class="dropdown-item" [routerLink]="['/lists','edit',listId]">Edit</a>
+                        <a class="dropdown-item text-danger" (click)="deleteList()">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <!--end lists__header -->
+
+            <!-- lists__body -->
+            <div class="list-items d-flex mt-3">
+                <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id, 'tasks']" routerLinkActive="is-active">
+                    <p class=" m-0 ">{{list.title}}</p>
+                </a>
+            </div>
+            <!--end lists__body -->
+            <div *ngIf="lists.length === 0" class="text-center">
+                <i class='bx bxs-down-arrow bx-fade-up size-30' style="color: gray;"></i>
+            </div>
+            <button class="btn bg-btn text-white" [routerLink]="['/lists','add']">+ New List</button>
         </div>
-      </div>
-      <!--end lists__header -->
+        <!-- end lists -->
 
-      <!-- lists__body -->
-      <div class="list-items d-flex mt-3">
-        <a class="list-item align-items-center" *ngFor="let list of lists" [routerLink]="['/lists', list._id, 'tasks']"
-          routerLinkActive="is-active">
-          <p class=" m-0 ">{{list.title}}</p>
-        </a>
-      </div>
-      <!--end lists__body -->
-      <div *ngIf="lists.length === 0" class="text-center">
-        <i class='bx bxs-down-arrow bx-fade-up size-30' style="color: gray;"></i>
-      </div>
-      <button class="btn bg-btn text-white " routerLink="/lists/add">+ New List</button>
-    </div>
-    <!-- end lists -->
+        <!-- begin tasks -->
+        <div class="list-tasks py-4 px-4 ">
+            <!-- have listId -->
+            <div *ngIf="listId">
+                <!--tasks__header -->
+                <div class="title"> Tasks </div>
+                <!--end tasks__header -->
 
-    <!-- begin tasks -->
-    <div class="list-tasks py-4 px-4 ">
-      <!-- have listId -->
-      <div *ngIf="listId">
-        <!--tasks__header -->
-        <div class="title"> Tasks </div>
-        <!--end tasks__header -->
-
-        <!--tasks__body -->
-        <div class="task" *ngFor="let task of tasks" (click)="onDone(task)" [ngClass]="task.completed ? 'is-done':''">
-          <div class="task__text">{{task.title}}</div>
-          <div class="task__buttons">
-            <button class="btn btn-danger mr-2 task__button" (click)="deleteTask(task)">
+                <!--tasks__body -->
+                <div class="task" *ngFor="let task of tasks" (click)="onDone(task)" [ngClass]="task.completed ? 'is-done':''">
+                    <div class="task__text">{{task.title}}</div>
+                    <div class="task__buttons">
+                        <button class="btn btn-danger mr-2 task__button" (click)="deleteTask(task)">
               <span class='bx bxs-trash-alt'></span>
             </button>
-            <button class="btn btn-outline-secondary task__button" [routerLink]="['/lists',task._listId,'tasks','edit',task._id]">
+                        <button class="btn btn-outline-secondary task__button" [routerLink]="['/lists',task._listId,'tasks','edit',task._id]">
               <i class='bx bxs-edit'></i>
             </button>
-          </div>
-        </div>
-        <!-- end tasks__body -->
+                    </div>
+                </div>
+                <!-- end tasks__body -->
 
-        <div *ngIf="tasks.length === 0 && lists.length !== 0 " class="mt-4 text-center size-16">
-          There are no tasks here. Click the add button to create a new task
-        </div>
+                <div *ngIf="tasks.length === 0 && lists.length !== 0 " class="mt-4 text-center size-16">
+                    There are no tasks here. Click the add button to create a new task
+                </div>
 
-        <!--button add -->
-        <button class="btn btn-new-task text-white size-25 m-4" routerLink='add'><i
+                <!--button add -->
+                <button class="btn btn-new-task text-white size-25 m-4" routerLink='add'><i
             class='bx bx-plus'></i></button>
-        <!--button add -->
-      </div>
-      <!-- end have listId -->
-      <!-- No listId -->
-      <div class="h-100 w-100 d-flex align-items-center justify-content-center size-20" *ngIf="!listId">
-        Please select a list from the sidebar
-      </div>
+                <!--button add -->
+            </div>
+            <!-- end have listId -->
+            <!-- No listId -->
+            <div class="h-100 w-100 d-flex align-items-center justify-content-center size-20" *ngIf="!listId">
+                Please select a list from the sidebar
+            </div>
 
+        </div>
     </div>
-  </div>
 </div>
 <!-- end task tab -->

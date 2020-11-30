@@ -1,34 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { AppComponentBase } from 'src/shared/common/AppComponentBase/AppComponentBase.component';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent extends AppComponentBase {
   errors = [];
   user: User = new User();
+  usernamePattern = '/^[a-z]{6,32}$/i';
+  passwordPattern = '/^(?=.*[!@#$%^&*]+)[a-z0-9!@#$%^&*]{6,32}$/';
 
-  constructor(private userService: UserService, private router: Router) { }
-
-  ngOnInit(): void {
-
+  constructor(private injector:Injector,private userService: UserService) {
+    super(injector);
   }
 
-  save(form: NgForm) {
+  save(form: NgForm):void {
+    if(form.invalid){
+      form.form.markAllAsTouched();
+      return;
+    }
     this.userService.createUser(this.user).subscribe((res:any) => {
-      if (!res.errors)
-        this.router.navigate(['login']);
+      if (res.result === '1')
+        {
+          this.message.success('Register successfully. Login now');
+          this.router.navigate(['login']);
+        }
       else {
-        console.log(res.errors);
+        this.message.danger(res.message);
       }
     }, err => {
-      console.log(err);
-    })
+      this.message.danger('Register failed. Something wrong');
+    });
   }
 
 }

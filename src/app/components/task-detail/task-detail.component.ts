@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Params} from '@angular/router';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
+import { AppComponentBase } from 'src/shared/common/AppComponentBase/AppComponentBase.component';
 
 @Component({
   selector: 'app-task-detail',
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.css']
 })
-export class TaskDetailComponent implements OnInit {
+export class TaskDetailComponent extends AppComponentBase implements OnInit {
 
   pageState: string;
   task: Task = new Task();
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) {
+  constructor(private injector:Injector,private taskService: TaskService) {
+    super(injector);
     this.route.params.subscribe((params: Params) => {
       this.task._listId = params.listId;
       this.task._id = params.id;

@@ -1,40 +1,51 @@
 <div class="centered-content">
-  <div class="login-box p-4">
-    <!-- login form -->
-    <form #loginForm="ngForm" (ngSubmit)="checkLogin(loginForm)">
-      <!-- title -->
-      <div class="title mb-3 text-center font-weight-bold">Sign in</div>
-      <!-- title -->
-      <!-- body -->
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="email">
-            <i class='bx bxs-envelope-open'></i>
-          </span>
-        </div>
-        <input ngModel name="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
-          aria-describedby="email">
-      </div>
-      <div class="input-group mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="password">
-            <i class='bx bxs-lock-alt'></i>
-          </span>
-        </div>
-        <input ngModel name="password" type="password" class="form-control" placeholder="Password" aria-label="Password"
-          aria-describedby="password">
-      </div>
-      <!-- end  body -->
-      <p class="text-danger">{{error}}</p>
+    <div class="login-box p-4">
+        <!-- login form -->
+        <form #loginForm="ngForm" (ngSubmit)="checkLogin(loginForm)">
+            <!-- title -->
+            <div class="title mb-3 text-center font-weight-bold">Sign in</div>
+            <!-- title -->
+            <!-- body -->
+            <!-- email input-->
+            <div class=" mb-3">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class='bx bxs-envelope-open'></i> </span>
+                    </div>
+                    <input #email="ngModel" ngModel name="email" type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email" required minlength="6" maxlength="30" email>
+                </div>
+                <div class="text-danger m-1 size-14" *ngIf="email.invalid && email.touched">
+                    <span *ngIf="email.errors?.required">* Email is required</span>
+                    <span *ngIf="email.errors?.minlength || email.errors?.maxlength">* Length from 6 to 32 characters</span>
+                    <span *ngIf="!(email.errors?.minlength || email.errors?.maxlength) && email.errors?.email">* Email invalid</span>
+                </div>
+            </div>
 
-      <!-- submit btn -->
-      <button class="btn bg-btn mb-2 w-100">Sign In</button>
-      <!-- end submit btn -->
+            <!-- pass input-->
+            <div class=" mb-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class='bx bxs-lock-alt'></i> </span>
+                    </div>
+                    <input #pwd="ngModel" ngModel name="password" type="password" class="form-control" placeholder="Password" required minlength="6" maxlength="32">
+                </div>
+                <div class="text-danger m-1 size-14" *ngIf="pwd.invalid && pwd.touched">
+                    <span *ngIf="pwd.errors?.required">* Password is required</span>
+                    <span *ngIf="pwd.errors?.minlength || pwd.errors?.maxlength">* Length from 6 to 32 characters</span>
+                </div>
+            </div>
 
-      <div class="sigup text-center mt-3" style="opacity: 0.7;">
-        Not registered? <a [routerLink]="['/signup']" class="text-info"> Create an account</a>
-      </div>
-    </form>
-    <!-- end form -->
-  </div>
+
+            <!-- end  body -->
+
+            <!-- submit btn -->
+            <button class="btn bg-btn mb-2 w-100">Sign In</button>
+            <!-- end submit btn -->
+
+            <div class="sigup text-center mt-3" style="opacity: 0.7;">
+                Not registered? <a [routerLink]="['/signup']" class="text-info"> Create an account</a>
+            </div>
+        </form>
+        <!-- end form -->
+    </div>
 </div>

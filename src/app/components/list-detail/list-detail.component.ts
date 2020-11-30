@@ -1,9 +1,8 @@
-import { Route } from '@angular/compiler/src/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { from } from 'rxjs';
+import { Params } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
+import { AppComponentBase } from 'src/shared/common/AppComponentBase/AppComponentBase.component';
 import { List } from '../../models/list.model';
 
 @Component({
@@ -11,11 +10,13 @@ import { List } from '../../models/list.model';
   templateUrl: './list-detail.component.html',
   styleUrls: ['./list-detail.component.css']
 })
-export class ListDetailComponent implements OnInit {
+export class ListDetailComponent extends AppComponentBase implements OnInit {
 
   pageState: string;
   list: List = new List();
-  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) {
+
+  constructor(private injector:Injector,private taskService: TaskService) {
+    super(injector);
     this.route.params.subscribe((params: Params) => {
       this.list._id = params.listId;
       this.list._userId = localStorage.getItem('userId');

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { WebRequestService } from 'src/shared/services/web-request.service';
 import { User } from '../models/user.model';
-import { WebRequestService } from './web-request.service';
 
 @Injectable({
   providedIn: 'root'

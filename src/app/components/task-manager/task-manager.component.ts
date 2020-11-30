@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, Injector, OnInit } from '@angular/core';
+import { Params } from '@angular/router';
 import { List } from 'src/app/models/list.model';
 import { Task } from 'src/app/models/task.model';
 import { LoginService } from 'src/app/services/login.service';
 import { TaskService } from 'src/app/services/task.service';
+import { AppComponentBase } from 'src/shared/common/AppComponentBase/AppComponentBase.component';
 
 @Component({
   selector: 'app-task-manager',
   templateUrl: './task-manager.component.html',
   styleUrls: ['./task-manager.component.css']
 })
-export class TaskManagerComponent implements OnInit {
-
+export class TaskManagerComponent extends AppComponentBase implements OnInit {
   lists: List[] = [];
   tasks: Task[] = [];
   listId: string;
 
-  constructor(private taskService: TaskService, private loginService: LoginService, private route: ActivatedRoute, private router: Router) {
+  constructor(private injector:Injector, private taskService: TaskService, private loginService: LoginService) {
+    super(injector)
   }
 
   ngOnInit(): void {

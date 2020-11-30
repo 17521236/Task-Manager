@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  SERVER_URL :  'https://task-manager-api-0.herokuapp.com'
+  SERVER_URL :  'https://task-manager-api-0.herokuapp.com',
+ // SERVER_URL :  'http://localhost:3000'
 };
 
 /*
